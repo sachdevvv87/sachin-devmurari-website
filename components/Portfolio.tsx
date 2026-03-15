@@ -6,10 +6,8 @@ import { motion, useInView } from "framer-motion";
 const caseStudies = [
   {
     metric: "300%",
-    metricLabel: "Organic Traffic Growth",
+    metricLabel: "ORGANIC TRAFFIC GROWTH",
     tag: "SaaS · SEO Strategy",
-    industry: "HR Tech SaaS",
-    timeline: "6 months",
     title: "300% Organic Traffic Growth for a B2B SaaS Platform",
     description:
       "Developed a comprehensive SEO overhaul for a mid-market SaaS platform — revamping site architecture, implementing topical authority clusters, and fixing critical technical SEO issues that unlocked massive indexing gains.",
@@ -18,10 +16,8 @@ const caseStudies = [
   },
   {
     metric: "2x",
-    metricLabel: "MQL Growth via Content",
+    metricLabel: "MQL GROWTH VIA CONTENT",
     tag: "Enterprise · Content Marketing",
-    industry: "Enterprise Software",
-    timeline: "12 months",
     title: "2x Pipeline Growth via Content for Enterprise Tech Brand",
     description:
       "Built and executed a full-funnel content strategy for an enterprise software company — from awareness blog content to bottom-of-funnel comparison pages, case studies, and gated whitepapers that accelerated deal velocity.",
@@ -30,10 +26,8 @@ const caseStudies = [
   },
   {
     metric: "DR +22",
-    metricLabel: "Domain Rating Increase",
+    metricLabel: "DOMAIN RATING INCREASE",
     tag: "Digital PR · Authority Building",
-    industry: "FinTech SaaS",
-    timeline: "4 months",
     title: "Domain Authority Surge via Digital PR Campaign",
     description:
       "Orchestrated a targeted digital PR campaign combining data-driven story angles, media outreach to tech publications, and HARO responses — earning 50+ high-quality backlinks from DR 60+ publications in the tech space.",
@@ -62,21 +56,28 @@ export default function Portfolio() {
           </h2>
         </motion.div>
 
-        {/* Case studies */}
-        <div className="flex flex-col gap-4">
+        {/* Case studies — full-width stacked */}
+        <div>
           {caseStudies.map((study, i) => (
             <motion.div
               key={study.title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="bg-[#0f0f0f] border border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02] rounded-2xl p-8 transition-all duration-200"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8">
+              {i > 0 && <div className="h-px bg-white/[0.06]" />}
+              <div className="py-12 flex flex-col lg:flex-row gap-8 lg:gap-16">
                 {/* Left: Big metric */}
-                <div className="flex flex-col justify-center">
-                  <div className="text-5xl font-bold text-white tracking-tight">{study.metric}</div>
-                  <div className="text-sm text-zinc-600 mt-2">{study.metricLabel}</div>
+                <div className="lg:w-[35%] shrink-0">
+                  <div
+                    className="font-bold text-white leading-none tracking-tight"
+                    style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
+                  >
+                    {study.metric}
+                  </div>
+                  <div className="text-zinc-500 text-sm uppercase tracking-widest mt-3">
+                    {study.metricLabel}
+                  </div>
                   <div className="mt-4 flex flex-col gap-1">
                     {study.secondaryMetrics.map((m) => (
                       <div key={m} className="text-xs text-zinc-600">{m}</div>
@@ -85,18 +86,10 @@ export default function Portfolio() {
                 </div>
 
                 {/* Right: Details */}
-                <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className="text-xs text-zinc-600 border border-white/[0.06] rounded-full px-3 py-1">
-                      {study.tag}
-                    </span>
-                    <span className="text-xs text-zinc-600">{study.industry} · {study.timeline}</span>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-white mb-3 leading-tight">{study.title}</h3>
-
+                <div className="lg:w-[65%]">
+                  <p className="text-xs text-zinc-600 uppercase tracking-widest mb-2">{study.tag}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 leading-tight">{study.title}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed mb-5">{study.description}</p>
-
                   <div className="flex flex-wrap gap-2">
                     {study.tags.map((tag) => (
                       <span

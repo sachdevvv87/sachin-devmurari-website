@@ -29,21 +29,26 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-black/80 border-b border-white/[0.06]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Monogram */}
+            {/* Brand */}
             <a
               href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="text-white font-bold text-lg tracking-tight"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="text-white text-sm font-medium tracking-tight"
             >
-              SD
+              Sachin Devmurari
             </a>
 
             {/* Desktop nav */}
@@ -53,19 +58,19 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm text-zinc-400 hover:text-white transition-colors duration-200"
+                  className="text-sm text-zinc-500 hover:text-white transition-colors duration-200"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            {/* CTA + hamburger */}
+            {/* CTA + Hamburger */}
             <div className="flex items-center gap-4">
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="hidden lg:inline-flex bg-white text-black font-semibold rounded-xl px-5 py-2 text-sm hover:bg-zinc-100 transition-colors"
+                className="hidden lg:inline-flex items-center border border-white/20 text-white rounded-full px-5 py-2 text-sm hover:border-white/50 hover:bg-white/[0.04] transition-all duration-200"
               >
                 Let&apos;s Talk
               </a>
@@ -99,8 +104,8 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                  className="text-3xl font-bold text-zinc-400 hover:text-white transition-colors"
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className="text-4xl font-bold text-zinc-500 hover:text-white transition-colors"
                 >
                   {link.label}
                 </motion.a>
@@ -110,8 +115,8 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, "#contact")}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.08 }}
-                className="mt-4 bg-white text-black font-semibold rounded-xl px-8 py-3 text-base hover:bg-zinc-100 transition-colors"
+                transition={{ delay: navLinks.length * 0.08, duration: 0.5 }}
+                className="mt-4 border border-white/20 text-white rounded-full px-8 py-3 text-base hover:border-white/50 transition-colors"
               >
                 Let&apos;s Talk
               </motion.a>

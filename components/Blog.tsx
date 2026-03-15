@@ -69,7 +69,7 @@ export default function Blog() {
           </h2>
         </motion.div>
 
-        {/* Article list */}
+        {/* Article list — newspaper style */}
         <div>
           {articles.map((article, i) => (
             <motion.div
@@ -85,7 +85,7 @@ export default function Blog() {
                 className="group flex items-center justify-between gap-6 py-5 hover:bg-white/[0.02] px-4 -mx-4 rounded-xl transition-colors duration-200"
               >
                 <div className="flex items-center gap-4 min-w-0">
-                  <span className="text-xs text-zinc-600 shrink-0 w-28 hidden sm:block">{article.tag}</span>
+                  <span className="text-xs text-zinc-600 shrink-0 w-32 hidden sm:block">{article.tag}</span>
                   <span className="text-white text-sm font-medium leading-snug group-hover:text-blue-400 transition-colors duration-200 line-clamp-2">
                     {article.title}
                   </span>

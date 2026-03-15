@@ -63,7 +63,7 @@ export default function Certifications() {
           </p>
         </motion.div>
 
-        {/* Groups */}
+        {/* Certification groups */}
         <div className="flex flex-col gap-10">
           {certificationGroups.map((group, gi) => (
             <motion.div
@@ -79,7 +79,7 @@ export default function Certifications() {
                 {group.certs.map((cert) => (
                   <div
                     key={cert.name}
-                    className="border border-white/[0.08] hover:border-white/[0.18] rounded-full px-4 py-2 flex items-center gap-2 transition-colors duration-200"
+                    className="border border-white/[0.07] hover:border-white/[0.18] rounded-full px-4 py-2 flex items-center gap-2 transition-colors duration-200"
                   >
                     <span className="text-sm text-zinc-300">{cert.name}</span>
                     <span className="text-xs text-zinc-600">·</span>
