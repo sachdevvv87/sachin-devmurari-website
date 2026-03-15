@@ -11,15 +11,22 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0f] overflow-x-hidden">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <Navbar />
       <Hero />
+      <div className="h-px bg-white/[0.06]" />
       <About />
+      <div className="h-px bg-white/[0.06]" />
       <Services />
+      <div className="h-px bg-white/[0.06]" />
       <Portfolio />
+      <div className="h-px bg-white/[0.06]" />
       <Experience />
+      <div className="h-px bg-white/[0.06]" />
       <Blog />
+      <div className="h-px bg-white/[0.06]" />
       <Certifications />
+      <div className="h-px bg-white/[0.06]" />
       <Contact />
       <Footer />
     </main>

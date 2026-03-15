@@ -1,61 +1,44 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { TrendingUp, ExternalLink, BarChart2, Users, Search, ArrowUpRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
 const caseStudies = [
   {
+    metric: "300%",
+    metricLabel: "Organic Traffic Growth",
     tag: "SaaS · SEO Strategy",
+    industry: "HR Tech SaaS",
+    timeline: "6 months",
     title: "300% Organic Traffic Growth for a B2B SaaS Platform",
     description:
       "Developed a comprehensive SEO overhaul for a mid-market SaaS platform — revamping site architecture, implementing topical authority clusters, and fixing critical technical SEO issues that unlocked massive indexing gains.",
-    metrics: [
-      { icon: TrendingUp, value: "300%", label: "Organic Traffic Growth", color: "text-blue-400" },
-      { icon: Search, value: "#1–3", label: "Rankings for 40+ Keywords", color: "text-green-400" },
-      { icon: BarChart2, value: "8x", label: "Increase in Organic Leads", color: "text-purple-400" },
-    ],
+    secondaryMetrics: ["#1–3 Rankings for 40+ Keywords", "8x Increase in Organic Leads"],
     tags: ["Technical SEO", "Content Architecture", "Schema Markup", "CRO"],
-    gradient: "from-blue-500/20 to-purple-500/20",
-    border: "border-blue-500/20",
-    accentColor: "text-blue-400",
-    timeline: "6 months",
-    industry: "HR Tech SaaS",
   },
   {
+    metric: "2x",
+    metricLabel: "MQL Growth via Content",
     tag: "Enterprise · Content Marketing",
+    industry: "Enterprise Software",
+    timeline: "12 months",
     title: "2x Pipeline Growth via Content for Enterprise Tech Brand",
     description:
       "Built and executed a full-funnel content strategy for an enterprise software company — from awareness blog content to bottom-of-funnel comparison pages, case studies, and gated whitepapers that accelerated deal velocity.",
-    metrics: [
-      { icon: Users, value: "2x", label: "MQL Growth via Content", color: "text-purple-400" },
-      { icon: TrendingUp, value: "180%", label: "Blog Traffic Increase", color: "text-blue-400" },
-      { icon: BarChart2, value: "45%", label: "Reduction in CAC", color: "text-cyan-400" },
-    ],
+    secondaryMetrics: ["180% Blog Traffic Increase", "45% Reduction in CAC"],
     tags: ["Content Strategy", "Lead Gen", "Thought Leadership", "ABM Content"],
-    gradient: "from-purple-500/20 to-cyan-500/20",
-    border: "border-purple-500/20",
-    accentColor: "text-purple-400",
-    timeline: "12 months",
-    industry: "Enterprise Software",
   },
   {
+    metric: "DR +22",
+    metricLabel: "Domain Rating Increase",
     tag: "Digital PR · Authority Building",
+    industry: "FinTech SaaS",
+    timeline: "4 months",
     title: "Domain Authority Surge via Digital PR Campaign",
     description:
       "Orchestrated a targeted digital PR campaign combining data-driven story angles, media outreach to tech publications, and HARO responses — earning 50+ high-quality backlinks from DR 60+ publications in the tech space.",
-    metrics: [
-      { icon: TrendingUp, value: "DR +22", label: "Domain Rating Increase", color: "text-cyan-400" },
-      { icon: ExternalLink, value: "50+", label: "Quality Backlinks Earned", color: "text-green-400" },
-      { icon: BarChart2, value: "3x", label: "Branded Search Growth", color: "text-rose-400" },
-    ],
+    secondaryMetrics: ["50+ Quality Backlinks Earned", "3x Branded Search Growth"],
     tags: ["Digital PR", "Link Building", "Media Outreach", "HARO"],
-    gradient: "from-cyan-500/20 to-teal-500/20",
-    border: "border-cyan-500/20",
-    accentColor: "text-cyan-400",
-    timeline: "4 months",
-    industry: "FinTech SaaS",
   },
 ];
 
@@ -64,154 +47,71 @@ export default function Portfolio() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="portfolio" className="relative py-24 lg:py-32 bg-[#0a0a0f] overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[350px] h-[350px] bg-blue-600/5 rounded-full blur-[100px]" />
-        <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-purple-600/5 rounded-full blur-[80px]" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="portfolio" className="py-32 lg:py-40 bg-black" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-3 mb-4"
-          >
-            <div className="h-px w-12 bg-blue-500" />
-            <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">Portfolio</span>
-            <div className="h-px w-12 bg-blue-500" />
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-bold text-white mb-4"
-          >
-            Case Studies &{" "}
-            <span
-              className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
-              style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-            >
-              Results
-            </span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
-          >
-            Real campaigns, measurable outcomes. Here&apos;s how I&apos;ve helped brands
-            achieve significant growth through strategic digital marketing.
-          </motion.p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-600 mb-6">Work</p>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            Results that speak.
+          </h2>
+        </motion.div>
 
         {/* Case studies */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">
           {caseStudies.map((study, i) => (
             <motion.div
               key={study.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.12 }}
-              whileHover={{ y: -4 }}
-              className={`group relative p-8 rounded-2xl bg-gradient-to-br ${study.gradient} border ${study.border} hover:border-opacity-60 transition-all duration-300 overflow-hidden`}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="bg-[#0f0f0f] border border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02] rounded-2xl p-8 transition-all duration-200"
             >
-              {/* Background pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8">
+                {/* Left: Big metric */}
+                <div className="flex flex-col justify-center">
+                  <div className="text-5xl font-bold text-white tracking-tight">{study.metric}</div>
+                  <div className="text-sm text-zinc-600 mt-2">{study.metricLabel}</div>
+                  <div className="mt-4 flex flex-col gap-1">
+                    {study.secondaryMetrics.map((m) => (
+                      <div key={m} className="text-xs text-zinc-600">{m}</div>
+                    ))}
+                  </div>
+                </div>
 
-              {/* Index number */}
-              <div className="absolute top-6 right-6 text-6xl font-black text-white/5 select-none">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Left: Content */}
-                <div className="lg:col-span-2">
+                {/* Right: Details */}
+                <div>
                   <div className="flex flex-wrap items-center gap-3 mb-4">
-                    <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-white/10 border border-white/15 ${study.accentColor}`}>
+                    <span className="text-xs text-zinc-600 border border-white/[0.06] rounded-full px-3 py-1">
                       {study.tag}
                     </span>
-                    <span className="text-xs text-gray-500">· {study.timeline} campaign · {study.industry}</span>
+                    <span className="text-xs text-zinc-600">{study.industry} · {study.timeline}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 leading-tight">
-                    {study.title}
-                  </h3>
+                  <h3 className="text-xl font-bold text-white mb-3 leading-tight">{study.title}</h3>
 
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                    {study.description}
-                  </p>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-5">{study.description}</p>
 
                   <div className="flex flex-wrap gap-2">
                     {study.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-400 text-xs font-medium"
+                        className="text-xs text-zinc-600 border border-white/[0.06] rounded-full px-3 py-1"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-
-                {/* Right: Metrics */}
-                <div className="flex flex-col gap-4 lg:items-end">
-                  {study.metrics.map((metric, j) => (
-                    <div
-                      key={j}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-black/30 border border-white/10 w-full lg:w-auto min-w-[180px]"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-                        <metric.icon size={18} className={metric.color} />
-                      </div>
-                      <div>
-                        <div className={`text-xl font-bold ${metric.color}`}>{metric.value}</div>
-                        <div className="text-gray-500 text-xs leading-tight">{metric.label}</div>
-                      </div>
-                    </div>
-                  ))}
-
-                  <button className="mt-2 flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group/btn">
-                    <span>View Full Case Study</span>
-                    <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </button>
-                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-14"
-        >
-          <p className="text-gray-500 mb-2 text-sm">These are select highlights.</p>
-          <p className="text-gray-400 mb-6">
-            Want to explore how similar results can be achieved for your brand?
-          </p>
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 transition-all duration-300 hover:-translate-y-1 font-medium"
-          >
-            Start Your Growth Journey
-            <ArrowUpRight size={16} />
-          </a>
-        </motion.div>
       </div>
     </section>
   );
