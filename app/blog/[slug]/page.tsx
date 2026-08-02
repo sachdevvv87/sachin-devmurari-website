@@ -1,6 +1,7 @@
 import { getArticle, getAllArticleSlugs } from "@/lib/articles";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -27,7 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         publishedTime: article.date,
         authors: ["Sachin Devmurari"],
         tags: article.tags,
+        ...(article.coverImage && { images: [article.coverImage] }),
       },
+      ...(article.coverImage && {
+        twitter: {
+          card: "summary_large_image",
+          title: article.title,
+          description: article.excerpt,
+          images: [article.coverImage],
+        },
+      }),
     };
   } catch {
     return { title: "Article Not Found" };
@@ -79,13 +89,25 @@ export default async function ArticlePage({ params }: Props) {
         </h1>
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-12 pb-8 border-b border-white/10">
+        <div className="flex items-center gap-4 text-sm text-gray-500 mb-8 pb-8 border-b border-white/10">
           <span>Sachin Devmurari</span>
           <span>·</span>
           <span>{formatted}</span>
           <span>·</span>
           <span>{article.readTime}</span>
         </div>
+
+        {/* Banner */}
+        {article.coverImage && (
+          <Image
+            src={article.coverImage}
+            alt={article.title}
+            width={1672}
+            height={941}
+            priority
+            className="w-full h-auto rounded-2xl border border-white/10 mb-12"
+          />
+        )}
 
         {/* MDX Content */}
         <div className="prose prose-invert prose-lg max-w-none

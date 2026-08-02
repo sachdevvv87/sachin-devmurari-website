@@ -1,5 +1,6 @@
 import { getAllArticles } from "@/lib/articles";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -64,7 +65,19 @@ function ArticleCard({
 
   return (
     <Link href={`/blog/${article.slug}`} className="group block">
-      <article className="border border-white/10 rounded-2xl p-6 md:p-8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-blue-500/40 transition-all duration-300">
+      <article className="border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] hover:bg-white/[0.05] hover:border-blue-500/40 transition-all duration-300">
+        {/* Thumbnail */}
+        {article.coverImage && (
+          <Image
+            src={article.coverImage}
+            alt={article.title}
+            width={1672}
+            height={941}
+            className="w-full h-auto border-b border-white/10"
+          />
+        )}
+
+        <div className="p-6 md:p-8">
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {article.tags.map((tag) => (
@@ -95,6 +108,7 @@ function ArticleCard({
           <span className="text-blue-400 group-hover:translate-x-1 transition-transform inline-block">
             Read →
           </span>
+        </div>
         </div>
       </article>
     </Link>

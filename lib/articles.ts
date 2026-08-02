@@ -4,6 +4,14 @@ import matter from "gray-matter";
 
 const articlesDir = path.join(process.cwd(), "content/articles");
 
+// Only surface a cover image if the file actually exists in /public.
+// Some articles declare a coverImage that was never uploaded — returning ""
+// lets the templates skip it rather than render a broken image.
+function resolveCoverImage(cover: unknown): string {
+  if (typeof cover !== "string" || !cover.startsWith("/")) return "";
+  return fs.existsSync(path.join(process.cwd(), "public", cover)) ? cover : "";
+}
+
 export interface ArticleMeta {
   slug: string;
   title: string;
@@ -45,7 +53,7 @@ export function getArticleMeta(slug: string): ArticleMeta {
     date: data.date ?? "",
     excerpt: data.excerpt ?? "",
     tags: data.tags ?? [],
-    coverImage: data.coverImage ?? "/images/blog/default.jpg",
+    coverImage: resolveCoverImage(data.coverImage),
     readTime: data.readTime ?? "5 min read",
   };
 }
@@ -60,7 +68,7 @@ export function getArticle(slug: string): Article {
     date: data.date ?? "",
     excerpt: data.excerpt ?? "",
     tags: data.tags ?? [],
-    coverImage: data.coverImage ?? "/images/blog/default.jpg",
+    coverImage: resolveCoverImage(data.coverImage),
     readTime: data.readTime ?? "5 min read",
     content,
   };
